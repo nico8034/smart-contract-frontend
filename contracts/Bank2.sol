@@ -9,6 +9,11 @@ contract Bank2 {
 
     function balanceOf(address owner) public view returns (uint256) {
         return (_balances[owner]);
+        // return (address(this).balance);
+    }
+
+    function totalBalance() public view returns (uint256) {
+        return (address(this).balance);
     }
 
     function withdraw(uint256 amount) public {

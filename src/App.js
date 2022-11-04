@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { DepositToContract, GetAccountBalance, GetBalanceOf, GetContractAddress, GetCurrentAccount, Init, WithdrawFromContract } from "./Client";
+import { DepositToContract, GetAccountBalance, GetBalanceOf, GetContractAddress, GetCurrentAccount, GetTotalBalance, Init, WithdrawFromContract } from "./Client";
 import Web3 from "web3";
 
 function App() {
   const [accountBalance, setaccountBalance] = useState('0');
   const [smartContractBalance, setsmartContractBalance] = useState('0');
   const [account, setaccount] = useState('')
-  const [depositInput, setdepositInput] = useState('');
-  const [withdrawInput, setwithdrawInput] = useState('second');
+  const [depositInput, setdepositInput] = useState('0');
+  const [withdrawInput, setwithdrawInput] = useState('0');
+  const [totalBalance, settotalBalance] = useState('0');
 
   const handleOnClick = () => {
     GetAccountBalance().then(balance => {
@@ -28,6 +29,14 @@ function App() {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const handleTotalBalance = () => {
+    GetTotalBalance().then(balance => {
+      settotalBalance(Web3.utils.fromWei(balance, 'ether'));
+    }).catch(err => {
+      console.log(err)
+    });
   }
 
   const handleUpdateSmartContractBalance = () => {
@@ -73,10 +82,13 @@ function App() {
             <div className="p-4">
               <p className="font-medium py-5">Bank Smart Contract:</p>
               <p className="bg-slate-200 rounded p-2 font-medium">{GetContractAddress()}</p>
-              <p className="py-2 font-medium">Smart Contract Balance of:</p>
+              <p className="py-2 pt-8 font-medium">Smart Contract Balance of:</p>
               <p className="py-2">{account}</p>
               <p className="bg-slate-200 rounded p-2 font-medium mb-2">{smartContractBalance + " eth"}</p>
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleUpdateSmartContractBalance}>Get Balance</button>
+              <p className="py-2 pt-8 font-medium">Total balance of Contract:</p>
+              <p className="bg-slate-200 rounded p-2 font-medium mb-2">{totalBalance + " eth"}</p>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleTotalBalance}>Get Balance</button>
             </div>
           </div>
         </div>

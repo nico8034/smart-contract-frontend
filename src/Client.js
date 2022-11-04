@@ -1,7 +1,8 @@
 import Web3 from "web3";
 import BankContract from "contracts/Bank2.json"
 
-const networkId = "1667488954185";
+const networkId = "1667549267147";
+
 let currentAccount;
 let bankContract;
 let isInitialized = false;
@@ -60,6 +61,14 @@ export const GetBalanceOf = async () => {
   }
 
   return await bankContract.methods.balanceOf(currentAccount).call();
+}
+
+export const GetTotalBalance = async () => {
+  if (!isInitialized) {
+    await Init();
+  }
+
+  return await bankContract.methods.totalBalance().call();
 }
 
 export const GetContractAddress = () => {
