@@ -1,7 +1,9 @@
 import Web3 from "web3";
 import BankContract from "contracts/Bank2.json"
+// import BankContract from "contracts/Bank2_geth.json"
 
-const networkId = "1667549267147";
+const networkId = "1667554424787";
+// const networkId = "58343"
 
 let currentAccount;
 let bankContract;

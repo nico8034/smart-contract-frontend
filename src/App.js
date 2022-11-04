@@ -61,11 +61,11 @@ function App() {
   return (
     <div className="w-full h-screen  pt-5">
       <div className="mx-auto">
-        <h1 className="text-center text-4xl p-10">Ethereum Assignmet</h1>
+        <h1 className="text-center font-medium text-4xl p-10">Ethereum Assignmet</h1>
         <div className="flex justify-center flex-wrap">
           <div className="w-400 bg-slate-300 rounded mr-10">
             <div className="p-4">
-              <p className="font-medium py-5">Current Account:</p>
+              <p className="font-medium text-xl pt-1 pb-5">Current Account:</p>
               <p className="bg-slate-200 rounded p-2 font-medium">{account}</p>
               <p className="py-3 font-medium">Account Balance:</p>
               <p className="bg-slate-200 rounded p-2 font-medium mb-2">{accountBalance + " eth"}</p>
@@ -80,7 +80,7 @@ function App() {
           </div>
           <div className="w-400 bg-slate-300 rounded ml-10">
             <div className="p-4">
-              <p className="font-medium py-5">Bank Smart Contract:</p>
+              <p className="font-medium pt-1 pb-5 text-xl">Bank Smart Contract:</p>
               <p className="bg-slate-200 rounded p-2 font-medium">{GetContractAddress()}</p>
               <p className="py-2 pt-8 font-medium">Smart Contract Balance of:</p>
               <p className="py-2">{account}</p>
